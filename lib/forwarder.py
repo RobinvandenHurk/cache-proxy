@@ -1,6 +1,6 @@
 import requests
 
-from response import Response
+from lib.response import Response
 
 
 class Forwarder:

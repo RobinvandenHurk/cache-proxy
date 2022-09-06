@@ -3,8 +3,8 @@ import socket
 import colorama
 from colorama import Fore
 
-from cache import Cache
-from client import Client
+from lib.cache import Cache
+from lib.client import Client
 
 
 class Server:

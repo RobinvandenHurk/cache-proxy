@@ -1,8 +1,8 @@
 from colorama import Fore
 
-from cache import Cache
-from forwarder import Forwarder
-from parser import get_method, get_url, get_headers
+from lib.cache import Cache
+from lib.forwarder import Forwarder
+from lib.parser import get_method, get_url, get_headers
 
 
 class Client:

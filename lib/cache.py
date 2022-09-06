@@ -1,4 +1,4 @@
-from response import Response
+from lib.response import Response
 
 
 class Cache:
@@ -20,7 +20,6 @@ class Cache:
             return self._entries[method][url]['response']
         else:
             return None
-
 
     def store(self, response: Response):
         method = response.get_request_method()
