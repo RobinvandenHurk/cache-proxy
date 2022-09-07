@@ -2,7 +2,7 @@ from colorama import Fore
 
 from lib.cache import Cache
 from lib.forwarder import Forwarder
-from lib.parser import get_method, get_url, get_headers
+from lib.parser import get_method, get_url, get_headers, get_body
 
 
 class Client:
@@ -20,6 +20,7 @@ class Client:
         url = get_url(request)
         method = get_method(request)
         headers = get_headers(request)
+        body = get_body(request)
 
         if self._cache.has(url, method):
             print(f"{Fore.GREEN}[+] Cache {method} {url}")
@@ -27,7 +28,7 @@ class Client:
         else:
             print(f"{Fore.YELLOW}[+] Forwarding {method} {url}")
 
-            response = Forwarder(url, headers, method).forward()
+            response = Forwarder(url, headers, method, body).forward()
 
             if response is not None:
                 self._cache.store(response)

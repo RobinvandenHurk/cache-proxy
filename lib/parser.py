@@ -18,3 +18,13 @@ def get_url(request: str):
 
 def get_method(request: str):
     return request.split(" ")[0]
+
+
+def get_body(request: str):
+    lines = request.split('\n\r')[1:]
+    body = []
+
+    for line in lines:
+        body.append(line.strip())
+
+    return '\n\r'.join(body)
