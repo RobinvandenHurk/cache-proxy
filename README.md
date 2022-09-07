@@ -9,7 +9,7 @@ if it hasn't seen this request yet.
 ### Usage
 
 The proxy is extremely easy to use. Firstly, you spin up the proxy with `python proxy.py`. Then you just have to prepend
-any request with `http://localhost/`.  
+any request with `http://localhost:5000/`.  
 
 For example, if your original request is like this:
 ```shell
