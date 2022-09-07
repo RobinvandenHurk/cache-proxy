@@ -43,6 +43,12 @@ This proxy was build to intercept API calls and respond from cache if possible. 
 calls. However, it does not play nice with binary responses, like images. The primary focus of this proxy currently lies
 in handling text based payloads, though binary support may be added later.
 
+### Contributing
+
+If you desire some changes or new features in this server you generally have two options:
+* Build it yourself and create a pull request (Please do :)
+* Create an issue describing (very clearly) what it is that you want
+
 ### TODO
 
 * Improve cache strategies (Right now read from cache based on HTTP method and URL)
