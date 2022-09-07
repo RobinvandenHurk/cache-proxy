@@ -1,3 +1,4 @@
+import validators
 from colorama import Fore
 
 from lib.cache import Cache
@@ -22,7 +23,9 @@ class Client:
         headers = get_headers(request)
         body = get_body(request)
 
-        if self._cache.has(url, method):
+        if not validators.url(url):
+            print(f"{Fore.YELLOW}[+] Invalid URL: {url}")
+        elif self._cache.has(url, method):
             print(f"{Fore.GREEN}[+] Cache {method} {url}")
             self._socket.sendall(self._cache.get(url, method).build())
         else:
