@@ -1,4 +1,5 @@
 import socket
+import threading
 
 import colorama
 from colorama import Fore
@@ -23,4 +24,5 @@ class Server:
         while True:
             client_socket, client_address = self.socket.accept()
             client = Client(client_socket, self._cache)
-            client.handle_connection()
+            thread = threading.Thread(target=client.handle_connection)
+            thread.start()
