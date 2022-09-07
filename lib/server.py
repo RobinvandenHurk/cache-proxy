@@ -3,14 +3,13 @@ import socket
 import colorama
 from colorama import Fore
 
-from lib.cache import Cache
 from lib.client import Client
 
 
 class Server:
 
-    def __init__(self, port):
-        self._cache = Cache()
+    def __init__(self, port, cache):
+        self._cache = cache
         self._port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

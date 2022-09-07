@@ -1,7 +1,10 @@
 from urllib.parse import urlparse
+
 import requests
-from lib.response import Response
 import urllib3
+from colorama import Fore
+
+from lib.response import Response
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -27,7 +30,7 @@ class Forwarder:
         if response is not None:
             return Response(response.text, response.status_code, response.headers, self._url, self._method)
         else:
-            print(f"[-] HTTP method {self._method} is not implemented")
+            print(f"{Fore.RED}[-] HTTP method {self._method} is not implemented")
             return None
 
     def _get(self):
