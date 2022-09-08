@@ -34,16 +34,13 @@ class Forwarder:
             return None
 
     def _get(self):
-        return requests.get(self._url, verify=False, data=self._body,
-                            proxies={'http': '127.0.0.1:8080', 'https': '127.0.0.1:8080'})
+        return requests.get(self._url, verify=False, data=self._body)
 
     def _post(self):
-        return requests.post(self._url, verify=False, data=self._body, headers=self._headers,
-                             proxies={'http': '127.0.0.1:8080', 'https': '127.0.0.1:8080'})
+        return requests.post(self._url, verify=False, data=self._body, headers=self._headers)
 
     def _head(self):
-        return requests.head(self._url, verify=False, data=self._body,
-                             proxies={'http': '127.0.0.1:8080', 'https': '127.0.0.1:8080'})
+        return requests.head(self._url, verify=False, data=self._body)
 
     def _fix_headers(self, headers: dict) -> dict:
         for header in headers:
