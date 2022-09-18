@@ -27,6 +27,18 @@ git clone https://github.com/RobinvandenHurk/cache-proxy.git
 pip install -r requirements.txt
 ```
 
+#### Docker
+
+If you want to run this cache proxy via docker you first need to build the image.
+```shell
+docker build . -t cache-proxy
+```
+
+Next create an empty cache file and run the image.
+```shell
+echo "{}" > cache.session
+docker run -p "5000:5000" -v "$(pwd)/cache.session:/cache.session" cache-proxy
+```
 
 ### Why would you need this?
 
