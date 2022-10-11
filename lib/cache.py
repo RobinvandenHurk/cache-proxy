@@ -56,11 +56,16 @@ class Cache:
             if os.path.isfile(self._session_file):
 
                 with open(self._session_file, "r") as session_file:
-                    self.cache_entries = jsonpickle.decode(session_file.read())
+                    content = session_file.read()
+                    if len(content) > 0:
+                        self.cache_entries = jsonpickle.decode(content)
 
-                    total = sum(int(v) for v in [len(self.cache_entries[entry]) for entry in self.cache_entries])
+                        total = sum(int(v) for v in [len(self.cache_entries[entry]) for entry in self.cache_entries])
+                        print(
+                            f"{Fore.GREEN}[+] Successfully loaded {total} cache entries from previous session")
+                    else:
+                        # Empty cache file
+                        print(f"{Fore.GREEN}[+] Using session file '{self._session_file}'")
 
-                    print(
-                        f"{Fore.GREEN}[+] Successfully loaded {total} cache entries from previous session")
             else:
                 print(f"{Fore.GREEN}[+] Using session file '{self._session_file}'")
