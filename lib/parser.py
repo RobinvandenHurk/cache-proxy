@@ -21,10 +21,7 @@ def get_method(request: str):
 
 
 def get_body(request: str):
-    lines = request.split('\n\r')[1:]
-    body = []
+    # Strip off the headers
+    _, body = request.split("\n\r", maxsplit=1)
 
-    for line in lines:
-        body.append(line.strip())
-
-    return '\n\r'.join(body)
+    return body
